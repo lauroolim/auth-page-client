@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -14,4 +14,14 @@ export class LoginPageDefaultComponent {
   @Input() title: string = ""; //o title do html que será recebido como input
   @Input() primaryBtnText: string = "";
   @Input() secondaryBtnText: string = "";
+  @Output("submit") onSubmit = new EventEmitter();
+  @Output("navigate") onNavigate = new EventEmitter();
+
+  submit() {
+    this.onSubmit.emit();
+  }
+
+  navigate() {
+    this.onNavigate.emit();
+  }
 }
